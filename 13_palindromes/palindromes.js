@@ -1,8 +1,15 @@
 const palindromes = function (str) {
-    const arrOriginal = str.split('');
-    const arrReverse = str.split('').reverse();
+    // lowercase, delete punctuation, split into an array of chars, get rid of spaces
+    const arrOriginal = str
+        .toLowerCase()
+        .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+        .split('')
+        .filter(char => char !== ' ');
     
-    // compare arrays
+    // reverse
+    const arrReverse = arrOriginal.toReversed();
+
+    // compare array equality
     return arrOriginal.length === arrReverse.length 
     && arrOriginal.every((value, index) => value === arrReverse[index]);
 };
